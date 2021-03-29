@@ -119,6 +119,21 @@ prevBtn.addEventListener('click',function(){
     quizes[count].style.display='block'
 })
 
+//listen for auth status changes
+auth.onAuthStateChanged(user =>{
+    if(user){
+        console.log('user logged in');
+        //redirect the user to the diary home page
+        //show the login button
+        logout.style.display="block";
+
+    } else{
+        console.log('user logged out');
+        //hide the log out button
+        logout.style.display="none";
+    }
+})
+
 //onclick logout for mobile
 function clickLogOut(){
     auth.signOut().then(()=>{

@@ -28,6 +28,15 @@ loginForm.addEventListener('submit',e=>{
     })
 })
 
+//logout
+const logout = document.querySelector('.button-nav-logout');
+logout.addEventListener('click',e=>{
+    e.preventDefault();
+    auth.signOut().then(()=>{
+        alert('User signed out');
+    })
+})
+
 //onclick logout for mobile
 function clickLogOut(){
     auth.signOut().then(()=>{
@@ -42,9 +51,11 @@ auth.onAuthStateChanged(user =>{
         console.log('user logged in')
         loginForm.style.display="none";
         document.querySelector('.button-login-open').style.display="none";
+        document.querySelector('.button-nav-logout').style.display="block";
     } else{
         console.log('user logged out');
         loginForm.style.visibility="visible";
         document.querySelector('.button-login-open').style.display="block";
+        document.querySelector('.button-nav-logout').style.display="none";
     }
 })
